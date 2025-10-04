@@ -130,6 +130,31 @@ h2 {
     background-color: #e5533d;
 }
 
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+    .gallery-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 15px;
+    }
+
+    .art-item img {
+        height: 200px;
+    }
+
+    .art-item h3 {
+        font-size: 1.2rem;
+    }
+
+    .art-item p {
+        font-size: 1rem;
+    }
+
+    .buy-btn {
+        padding: 10px 20px;
+        font-size: 0.9rem;
+    }
+}
+
 #about p {
     font-size: 1.1rem;
     max-width: 700px;
@@ -241,3 +266,10 @@ footer {
 #order-form button:hover {
     background-color: #e5533d;
 }
+
+/* @media (max-width: 480px) {
+ .art-item{
+    width: 100px ;
+    height: 100px;
+ }
+} */
