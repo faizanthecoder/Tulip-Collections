@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Artist's Drawing Gallery</title>
     <link rel="stylesheet" href="index.css">
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
 </head>
 <body>
     <header>
@@ -67,6 +68,22 @@
             <button type="submit">Send</button>
         </form>
     </section>
+
+    <!-- Modal for Order Form -->
+    <div id="order-modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Place Your Order</h2>
+            <form id="order-form">
+                <input type="text" id="buyer-name" placeholder="Your Name" required>
+                <input type="email" id="buyer-email" placeholder="Your Email" required>
+                <input type="text" id="buyer-address" placeholder="Your Address" required>
+                <input type="tel" id="buyer-phone" placeholder="Your Phone" required>
+                <textarea id="buyer-message" placeholder="Additional Message"></textarea>
+                <button type="submit">Submit Order</button>
+            </form>
+        </div>
+    </div>
 
     <footer>
         <p>&copy; 2023 Artistic Drawings. All rights reserved.</p>
