@@ -131,6 +131,63 @@ h2 {
     background-color: #e5533d;
 }
 
+/* ===== SHOW MORE EFFECT (IMPROVED BLENDING) ===== */
+.gallery-grid.fade-mask {
+  position: relative;
+  overflow: hidden;
+}
+
+.gallery-grid.fade-mask::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 160px;
+  background: linear-gradient(to top,
+    rgba(218, 212, 212, 1) 0%,     /* same as body bg color */
+    rgba(218, 212, 212, 0.9) 20%,
+    rgba(218, 212, 212, 0.5) 50%,
+    rgba(218, 212, 212, 0.2) 80%,
+    rgba(218, 212, 212, 0) 100%);
+  pointer-events: none;
+  transition: opacity 0.6s ease;
+  animation: softGlow 2s infinite alternate ease-in-out;
+  border-radius: 0 0 20px 20px;
+}
+
+/* Subtle breathing glow to suggest "more content below" */
+@keyframes softGlow {
+  0% { box-shadow: 0 -10px 30px rgba(65, 105, 225, 0.1); }
+  100% { box-shadow: 0 -20px 40px rgba(65, 105, 225, 0.25); }
+}
+
+
+    /* 🔘 Button styling */
+    #showMoreBtn {
+      margin: 30px 0px 0px 480px ;
+      padding: 12px 25px;
+      background: linear-gradient(45deg, royalblue, dodgerblue);
+      color: white;
+      border: none;
+      border-radius: 25px;
+      cursor: pointer;
+      font-size: 16px;
+      box-shadow: 0 4px 10px rgba(0, 0, 255, 0.3);
+      transition: all 0.3s ease;
+      animation: pulse 1.5s infinite;
+    }
+
+    #showMoreBtn:hover {
+      transform: scale(1.05);
+    }
+
+    @keyframes pulse {
+      0% { box-shadow: 0 0 10px rgba(65,105,225, 0.6); }
+      50% { box-shadow: 0 0 20px rgba(65,105,225, 1); }
+      100% { box-shadow: 0 0 10px rgba(65,105,225, 0.6); }
+    }
+
 /* Mobile responsiveness */
 @media (max-width: 768px) {
     .gallery-grid {
@@ -338,9 +395,9 @@ footer {
       font-size: 22px;
     }
 
-    #showMoreBtn {
+    /* #showMoreBtn {
   margin: 20px 0px 0px 480px;
-  /* align-items: center; */
+  
   padding: 10px 20px;
   background: royalblue;
   color: white;
@@ -352,4 +409,4 @@ footer {
 
 #showMoreBtn:hover {
   background: darkblue;
-}
+} */
