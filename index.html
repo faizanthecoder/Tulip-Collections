@@ -23,23 +23,63 @@
         <h2>Welcome to My Art World</h2>
         <p>Explore and purchase unique hand-drawn artworks.</p>
     </section>
-
+<!-- <div class="img-details"></div> -->
+   <div class="popup" id="popup">
+    <div class="popup-content">
+      <button class="close-btn" id="closeBtn">×</button>
+      <img id="popupImg" src="" alt="">
+      <p class="details" id="popupDetails"></p>
+    </div>
+  </div>
     <section id="gallery">
         <h2>Gallery</h2>
         <div class="gallery-grid">
-            <div class="img-details"></div>
+            
             <div class="art-item">
                 <!-- <img src="https://via.placeholder.com/300x400?text=Drawing+1" alt="Drawing 1"> -->
-                <img src="Images/pic-1.jpg" alt="Drawing 1">
+                <img src="Images/pic-1.jpg" data-img_name="Fruits & Cosmetics" data-img_price="50$" data-img_madewith="Pencil Colors" alt="error loading image">
 
-                <h3>Abstract Landscape</h3>
+                <h3>Fruits & Cosmetics</h3>
                 <p>$50</p>
                 <button class="buy-btn" data-price="50" data-title="Abstract Landscape">Buy Now</button>
             </div>
             <div class="art-item">
                 <!-- <img src="https://via.placeholder.com/300x400?text=Drawing+2" alt="Drawing 2"> -->
-                <img src="Images/pic-2.jpg" alt="Drawing 1">
-                <h3>Portrait Sketch</h3>
+                <img src="Images/pic-2.jpg" data-img_name="Flowers & Fruits" data-img_price="40$" data-img_madewith="Water colures" alt="error loading image">
+                
+                <h3>Flowers & Fruits</h3>
+                <p>$40</p>
+                <button class="buy-btn" data-price="40" data-title="Portrait Sketch">Buy Now</button>
+            </div>
+             <div class="art-item">
+                <!-- <img src="https://via.placeholder.com/300x400?text=Drawing+2" alt="Drawing 2"> -->
+                <img src="Images/pic-3.jpg" data-img_name="Flowers & Fruits" data-img_price="40$" data-img_madewith="Water colures" alt="error loading image">
+                
+                <h3>Flowers & Fruits</h3>
+                <p>$40</p>
+                <button class="buy-btn" data-price="40" data-title="Portrait Sketch">Buy Now</button>
+            </div>
+             <div class="art-item">
+                <!-- <img src="https://via.placeholder.com/300x400?text=Drawing+2" alt="Drawing 2"> -->
+                <img src="Images/pic-2.jpg" data-img_name="Flowers & Fruits" data-img_price="40$" data-img_madewith="Water colures" alt="error loading image">
+                
+                <h3>Flowers & Fruits</h3>
+                <p>$40</p>
+                <button class="buy-btn" data-price="40" data-title="Portrait Sketch">Buy Now</button>
+            </div>
+             <div class="art-item">
+                <!-- <img src="https://via.placeholder.com/300x400?text=Drawing+2" alt="Drawing 2"> -->
+                <img src="Images/pic-2.jpg" data-img_name="Flowers & Fruits" data-img_price="40$" data-img_madewith="Water colures" alt="error loading image">
+                
+                <h3>Flowers & Fruits</h3>
+                <p>$40</p>
+                <button class="buy-btn" data-price="40" data-title="Portrait Sketch">Buy Now</button>
+            </div>
+             <div class="art-item">
+                <!-- <img src="https://via.placeholder.com/300x400?text=Drawing+2" alt="Drawing 2"> -->
+                <img src="Images/pic-2.jpg" data-img_name="Flowers & Fruits" data-img_price="40$" data-img_madewith="Water colures" alt="error loading image">
+                
+                <h3>Flowers & Fruits</h3>
                 <p>$40</p>
                 <button class="buy-btn" data-price="40" data-title="Portrait Sketch">Buy Now</button>
             </div>
@@ -97,6 +137,7 @@
                 <button class="buy-btn" data-price="45" data-title="Nature Scene">Buy Now</button>
             </div>
         </div>
+        <button id="showMoreBtn">Show More</button>
     </section>
 
     <section id="about">

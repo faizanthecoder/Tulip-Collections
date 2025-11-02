@@ -2,14 +2,31 @@ emailjs.init("Bf2O8gq5fTzog_Vry");
 
 document.addEventListener('DOMContentLoaded', () => {
 
-let images = document.querySelectorAll("img");
+    const images = document.querySelectorAll("img");
+    const popup = document.getElementById("popup");
+    const popupImg = document.getElementById("popupImg");
+    const popupDetails = document.getElementById("popupDetails");
+    const closeBtn = document.getElementById("closeBtn");
 
-images.forEach(function(singleImg) {
-  singleImg.addEventListener("click", function() {
-    
-  });
-});
+    images.forEach(img => {
+        img.addEventListener("click", () => {
+            // let h3=document.querySelectorAll("h3")
+            popupImg.src = img.src; // use clicked image
+            popupDetails.innerHTML = `This painting name is ${img.getAttribute("data-img_name")}. It is made of water ${img.getAttribute("data-img_madewith")} <br> It's Price is ${img.getAttribute("data-img_price")}`; // use alt text as details
 
+            // popupDetails.textContent = `This painting name is ${h3}.Its made of water pensil collors <br>Its Price is ${img.getAttribute("p")}`; // use alt text as details
+            popup.classList.add("active");
+        });
+    });
+
+    closeBtn.addEventListener("click", () => {
+        popup.classList.remove("active");
+    });
+
+    // Close popup when clicking outside image
+    popup.addEventListener("click", (e) => {
+        if (e.target === popup) popup.classList.remove("active");
+    });
     const buyButtons = document.querySelectorAll('.buy-btn');
     let selectedTitle = '';
     let selectedPrice = '';
@@ -35,6 +52,35 @@ images.forEach(function(singleImg) {
             orderModal.style.display = 'none';
         }
     });
+
+    const imagess = document.querySelectorAll(".art-item");
+const showMoreBtn = document.getElementById("showMoreBtn");
+
+let imagessPerPage = 6; // number of images to show initially
+let currentIndex = 0;
+
+// hide all initially
+imagess.forEach(img => img.style.display = "none");
+
+// show first batch
+function showImagess() {
+  const nextIndex = currentIndex + imagessPerPage;
+  for (let i = currentIndex; i < nextIndex && i < imagess.length; i++) {
+    imagess[i].style.display = "block";
+  }
+  currentIndex += imagessPerPage;
+
+  // hide button if all images shown
+  if (currentIndex >= imagess.length) {
+    showMoreBtn.style.display = "none";
+  }
+}
+
+// initial load
+showImagess();
+
+// button click handler
+showMoreBtn.addEventListener("click", showImagess);
 
     orderForm.addEventListener('submit', (e) => {
         e.preventDefault();
