@@ -273,3 +273,10 @@ footer {
     height: 100px;
  }
 } */
+.img-details{
+    background-color: #e5533d;
+    position: relative;
+    top: 1000px;
+    left: 100px;
+    z-index: 999;
+}

@@ -1,6 +1,15 @@
 emailjs.init("Bf2O8gq5fTzog_Vry");
 
 document.addEventListener('DOMContentLoaded', () => {
+
+let images = document.querySelectorAll("img");
+
+images.forEach(function(singleImg) {
+  singleImg.addEventListener("click", function() {
+    
+  });
+});
+
     const buyButtons = document.querySelectorAll('.buy-btn');
     let selectedTitle = '';
     let selectedPrice = '';
