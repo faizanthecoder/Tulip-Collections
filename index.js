@@ -1,6 +1,13 @@
 emailjs.init("Bf2O8gq5fTzog_Vry");
 
 document.addEventListener('DOMContentLoaded', () => {
+       let favbtn=document.getElementById("favBtn")
+       favbtn.addEventListener("click",function(){
+        
+       })
+
+
+
 
     const images = document.querySelectorAll("img");
     const popup = document.getElementById("popup");
@@ -54,33 +61,33 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     const imagess = document.querySelectorAll(".art-item");
-const showMoreBtn = document.getElementById("showMoreBtn");
+    const showMoreBtn = document.getElementById("showMoreBtn");
 
-let imagessPerPage = 6; // number of images to show initially
-let currentIndex = 0;
+    let imagessPerPage = 6; // number of images to show initially
+    let currentIndex = 0;
 
-// hide all initially
-imagess.forEach(img => img.style.display = "none");
+    // hide all initially
+    imagess.forEach(img => img.style.display = "none");
 
-// show first batch
-function showImagess() {
-  const nextIndex = currentIndex + imagessPerPage;
-  for (let i = currentIndex; i < nextIndex && i < imagess.length; i++) {
-    imagess[i].style.display = "block";
-  }
-  currentIndex += imagessPerPage;
+    // show first batch
+    function showImagess() {
+        const nextIndex = currentIndex + imagessPerPage;
+        for (let i = currentIndex; i < nextIndex && i < imagess.length; i++) {
+            imagess[i].style.display = "block";
+        }
+        currentIndex += imagessPerPage;
 
-  // hide button if all images shown
-  if (currentIndex >= imagess.length) {
-    showMoreBtn.style.display = "none";
-  }
-}
+        // hide button if all images shown
+        if (currentIndex >= imagess.length) {
+            showMoreBtn.style.display = "none";
+        }
+    }
 
-// initial load
-showImagess();
+    // initial load
+    showImagess();
 
-// button click handler
-showMoreBtn.addEventListener("click", showImagess);
+    // button click handler
+    showMoreBtn.addEventListener("click", showImagess);
 
     orderForm.addEventListener('submit', (e) => {
         e.preventDefault();
