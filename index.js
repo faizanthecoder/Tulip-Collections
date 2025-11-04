@@ -1,39 +1,72 @@
 emailjs.init("Bf2O8gq5fTzog_Vry");
 
 document.addEventListener('DOMContentLoaded', () => {
-       let favbtn=document.getElementById("favBtn")
-       favbtn.addEventListener("click",function(){
-        
-       })
 
-
-
+    // ---------- POPUP + FAVOURITES FEATURE ---------- //
 
     const images = document.querySelectorAll("img");
     const popup = document.getElementById("popup");
     const popupImg = document.getElementById("popupImg");
     const popupDetails = document.getElementById("popupDetails");
     const closeBtn = document.getElementById("closeBtn");
+    const saveBtn = document.getElementById("saveBtn"); // <-- add this button inside your popup HTML
+
+    let currentImageData = null; // will hold data of the clicked image
 
     images.forEach(img => {
         img.addEventListener("click", () => {
-            // let h3=document.querySelectorAll("h3")
-            popupImg.src = img.src; // use clicked image
-            popupDetails.innerHTML = `This painting name is ${img.getAttribute("data-img_name")}. It is made of water ${img.getAttribute("data-img_madewith")} <br> It's Price is ${img.getAttribute("data-img_price")}`; // use alt text as details
+            // Store current image info
+            currentImageData = {
+                src: img.src,
+                name: img.getAttribute("data-img_name"),
+                price: img.getAttribute("data-img_price"),
+                madewith: img.getAttribute("data-img_madewith")
+            };
 
-            // popupDetails.textContent = `This painting name is ${h3}.Its made of water pensil collors <br>Its Price is ${img.getAttribute("p")}`; // use alt text as details
+            // Update popup content
+            popupImg.src = currentImageData.src;
+            popupDetails.innerHTML = `
+                <strong>${currentImageData.name}</strong><br>
+                Made with: ${currentImageData.madewith}<br>
+                Price: ${currentImageData.price}
+            `;
+
+            // Show popup
             popup.classList.add("active");
         });
     });
 
+    // Close popup
     closeBtn.addEventListener("click", () => {
         popup.classList.remove("active");
     });
 
-    // Close popup when clicking outside image
+    // Close popup by clicking outside the image
     popup.addEventListener("click", (e) => {
         if (e.target === popup) popup.classList.remove("active");
     });
+
+    // Save to favourites (only when Save button is clicked)
+    saveBtn.addEventListener("click", () => {
+        if (!currentImageData) return;
+
+        let favs = JSON.parse(localStorage.getItem("favourites")) || [];
+        let alreadySaved = favs.some(f => f.src === currentImageData.src);
+
+        if (!alreadySaved) {
+            favs.push(currentImageData);
+            localStorage.setItem("favourites", JSON.stringify(favs));
+            saveBtn.textContent = "✅ Saved!";
+            setTimeout(() => saveBtn.textContent = "❤️ Save", 1200);
+        } else {
+            alert("Already in favourites!");
+        }
+    });
+
+
+
+    // ---------- BUY MODAL FEATURE ---------- //
+
     const buyButtons = document.querySelectorAll('.buy-btn');
     let selectedTitle = '';
     let selectedPrice = '';
@@ -59,6 +92,10 @@ document.addEventListener('DOMContentLoaded', () => {
             orderModal.style.display = 'none';
         }
     });
+
+
+
+    // ---------- SHOW MORE FEATURE ---------- //
 
     const imagess = document.querySelectorAll(".art-item");
     const showMoreBtn = document.getElementById("showMoreBtn");
@@ -89,6 +126,10 @@ document.addEventListener('DOMContentLoaded', () => {
     // button click handler
     showMoreBtn.addEventListener("click", showImagess);
 
+
+
+    // ---------- EMAILJS ORDER FEATURE ---------- //
+
     orderForm.addEventListener('submit', (e) => {
         e.preventDefault();
 
@@ -118,6 +159,10 @@ document.addEventListener('DOMContentLoaded', () => {
                 console.error('EmailJS error:', error);
             });
     });
+
+
+
+    // ---------- CONTACT FORM FEATURE ---------- //
 
     const contactForm = document.getElementById('contact-form');
     contactForm.addEventListener('submit', (e) => {
